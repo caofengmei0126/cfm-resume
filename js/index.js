@@ -6,10 +6,7 @@ var pageRender = (function () {
     var $cfmSpan = $cfmBtn.children('span');
     var $page3 = $('.page3');
     var mySwiper = null;
-
     function moveFn(example) {
-        /*$audio[0].play();
-        $cfmSpan[0].id = 'cfmSpan';*/
         var $ols = $('ol');
         $.each($ols, function (m, itemm) {
             var $oLis = $(itemm).find('li');
@@ -58,15 +55,15 @@ var pageRender = (function () {
             $cfmCou.makisu({
                 selector: 'dd',
                 overlap: 0.6,
-                speed: 0.5
+                speed: 0.6
             });
             $cfmCou.makisu('open');
-        }
-        else {
+        } else {
             //$page3.css('opacity',1);
+            //console.log(1)
             $cfmCou.makisu({
                 selector: 'dd',
-                overlap: 0.6,
+                overlap:0.6,
                 speed: 0
             });
             $cfmCou.makisu('close');
@@ -90,7 +87,7 @@ var pageRender = (function () {
     }
 
     function bindEvent(ele) {
-        var isPlay = true;
+        var isPlay = false;
         ele.onclick = function () {
             if (isPlay) {
                 $audio[0].pause();
@@ -112,8 +109,11 @@ var pageRender = (function () {
                 onInit: moveFn,
                 onTransitionEnd: moveFn
             });
-            $audio[0].play();
-            $cfmSpan[0].id = 'cfmSpan';
+            /*$audio[0].play();*/
+            $audio[0].pause();
+            $cfmSpan[0].id =null;
+
+            /*$cfmSpan[0].id = 'cfmSpan';*/
             bindEvent($cfmSpan[0]);
         }
     }
